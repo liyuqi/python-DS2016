@@ -90,10 +90,8 @@ a_tuple = (1,2,'a')
 b_tuple = 1,2,'c'
 
 ## 1.3-2 accessing elem of a tuple through index
-print 'b_tuple[0]: '
-print  b_tuple[0]    # 1
-print 'b_tuple[-1]: '
-print  b_tuple[-1]   # c
+print 'b_tuple[0]: ', b_tuple[0]    # 1
+print 'b_tuple[-1]: ',b_tuple[-1]   # c
 
 ## 1.3-3 no possible to change the value of tuple item (immutable)
 try:
@@ -103,12 +101,10 @@ except:
 
 ## 1.3-4 through tuples are immutable, but tuple elem can be mutable obj
 c_tuple = (1,2,[10,20,30])
-print 'c_tuple: '
-print  c_tuple
+print 'c_tuple: ', c_tuple
 
 c_tuple[2][0]=100
-print 'c_tuple: '
-print  c_tuple
+print 'c_tuple: ', c_tuple
 
 ## 1.3-5 tuple no extend, but can concate
 print 'a_tuple + b_tuple'
@@ -116,17 +112,76 @@ print a_tuple+b_tuple
 
 ## 1.3-6 tuple slice
 a = (1,2,3,4,5,6,7,8,9,10)
-print 'a slice'
-print a[1:]
-print a[1:3]
-print a[1:6:2]
-print a[:-1]
+print "a[1:]   : ", a[1:]         # (2, 3, 4, 5, 6, 7, 8, 9, 10)
+print "a[1:3]  : ", a[1:3]        # (2, 3)
+print "a[1:6:2]: ", a[1:6:2]      # (2, 4, 6) from 1 to 6 step 2
+print "a[:-1]  : ", a[:-1]        # (1, 2, 3, 4, 5, 6, 7, 8, 9)
+print "a[::-1] : ", a[::-1]       #*(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
 
+## 1.3-7 min() max()
+print "min(a)  : ", min(a)        # 1
+print "max(a)  : ", max(a)        # 10
 
+## 1.3-8 lookup element
+if 99 in a:
+    print "Element 1 is in tuple a"
+else:
+    print "Element 99 not in tuple a"
+
+from collections import namedtuple
+
+vector = namedtuple("Dimension",'x y z')
+vec1 = vector(1,1,1)
+vec2 = vector(1,0,1)
+
+mahattanDistance = abs(vec1.x - vec2.x) + abs(vec1.y - vec2.y) + abs(vec1.z - vec2.z)
+
+print "Manhatatan Distance between vectors = ", mahattanDistance
+
+''' 1.4 Using sets p.87'''
+## 1.4-1 init 2 sentences
+st1 = "dogs chase cats"
+st2 = "dogs hate cats"
+
+## 1.4-2 create set of 2 words from strings
+st1_words = set(st1.split())
+st2_words = set(st2.split())
+
+## 1.4-3 find unique words in set, vocab size
+st1num = len(st1_words)
+st2num = len(st2_words)
+
+## 1.4-4 find list of common word between 2 sets
+cmn_words = st1_words.intersection(st2_words)
+no_cmd_words = len(st1_words.intersection(st2_words))
+
+## 1.4-5 find list of unique word
+unq_words = st1_words.union(st2_words)
+no_unq_words = len(st1_words.union(st2_words))
+
+## 1.4-6 Jaccard similar
+similarity = no_cmd_words / (1.0*no_unq_words)
+
+## 1.4-7 show
+print "\nset manipulate"
+print "no_cmd_words:\t", no_cmd_words
+print "cmn_words:\t", cmn_words
+print "no_unq_words:\t", no_unq_words
+print "unq_words:\t", unq_words
+print "similarity:\t", similarity
+
+## 1.4-8.1
+from sklearn.metrics import jaccard_similarity_score
+
+a = [1 if w in st1_words else 0 for w in unq_words]
+b = [1 if w in st2_words else 0 for w in unq_words]
+
+print "jaccard: ", jaccard_similarity_score(a,b)
+print "a: ",a
+print "b: ",b
 
 
 '''
-1.4 Using sets p.87
 1.5 Writing a list p.
 1.6 Creating a list from another list - list comprehension p.
 1.7 Using iterators p.
