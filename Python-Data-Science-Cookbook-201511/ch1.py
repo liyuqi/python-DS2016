@@ -203,10 +203,6 @@ print "b: ",b
 1.23 Working with itertools p.
 '''
 
-1
-2
-3
-
 
 
 
