@@ -181,9 +181,68 @@ print "a: ",a
 print "b: ",b
 
 
+''' 1.5 Writing a list p.93'''
+## 1.5-1
+a = range(1,10)
+b = ['a','b','c']
+
+print 'a[]:\t',     a[0:]    # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print 'a[0]:\t',    a[0]     # 1
+print 'a[-1]:\t',   a[-1]    # 9
+
+### 1.5-2 slice, indexing
+print 'a[1:3]:\t',  a[1:3]      # [2, 3]
+print 'a[1:]:\t',   a[1:]       # [2, 3, 4, 5, 6, 7, 8, 9]
+print 'a[-1:]:\t',  a[-1:]      # [9]
+print 'a[:-1]:\t',  a[:-1]      # [1, 2, 3, 4, 5, 6, 7, 8]
+
+### 1.5-4 list concatenate
+a = [1,2]
+b = [3,4]
+print 'a+b',a+b                 # [1,2,3,4]
+
+print min(a),max(a)
+
+if 1 in a:
+    print "elem 1 is in list a"
+else:
+    print "elem 1 is in tuple a"
+
+a = range(1,10)
+a.append(10)
+print a
+
+### 1.5-9 list stack
+a_stack=[]
+a_stack.append(1)
+a_stack.append(2)
+a_stack.append(3)
+
+print 'a_stack.pop(): ',a_stack.pop()
+print 'a_stack.pop(): ',a_stack.pop()
+print 'a_stack.pop(): ',a_stack.pop()
+
+### 1.5-10 list queue
+a_queue = []
+a_queue.append(1)
+a_queue.append(2)
+a_queue.append(3)
+
+print 'a_queue.pop(0): ',a_queue.pop(0)
+print 'a_queue.pop(0): ',a_queue.pop(0)
+print 'a_queue.pop(0): ',a_queue.pop(0)
+
+### 1.5-11 sort, reverse
+from random import shuffle
+a = range(1,10)
+shuffle(a)
+print 'shuffle(a): ',a              # [6, 3, 8, 2, 4, 1, 5, 9, 7]
+print 'a.sort(): ',a.sort(),a       # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print 'a.reverse(): ',a.reverse(),a # [9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+
 '''
-1.5 Writing a list p.
-1.6 Creating a list from another list - list comprehension p.
+1.6 Creating a list from another list - list comprehension p.101
 1.7 Using iterators p.
 1.8 Generating an iterator and a generator p.
 1.9 Using iterables p.
